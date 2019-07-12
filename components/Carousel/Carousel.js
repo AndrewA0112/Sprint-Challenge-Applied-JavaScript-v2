@@ -17,3 +17,83 @@
     <div class="right-button"> > </div>
   </div>
 */
+
+const carousel = document.querySelector('.carousel-container')
+carousel.appendChild(createCarousel())
+
+function createCarousel () {
+  const carousel = document.createElement('div')
+  const leftButton = document.createElement('div')
+  const imgOne = document.createElement('img')
+  const imgTwo = document.createElement('img')
+  const imgThree = document.createElement('img')
+  const imgFour = document.createElement('img')
+  const rightButton = document.createElement('dov')
+
+  carousel.classList.add('carousel')
+  leftButton.classList.add('left-button')
+  rightButton.classList.add('right-button')
+
+  leftButton.textContent = '<'
+  rightButton.textContent = '>'
+  imgOne.src = '/assets/carousel/mountains.jpeg'
+  imgTwo.src = '/assets/carousel/computer.jpeg'
+  imgThree.src = '/assets/carousel/trees.jpeg'
+  imgFour.src = '/assets/carousel/turntable.jpeg'
+
+  carousel.appendChild(leftButton)
+  carousel.appendChild(imgOne)
+  carousel.appendChild(imgTwo)
+  carousel.appendChild(imgThree)
+  carousel.appendChild(imgFour)
+  carousel.appendChild(rightButton)
+
+  return carousel
+}
+
+class Carousel {
+  constructor(carouselElement){
+      this.carouselElement = carouselElement
+
+      this.leftButton = carousel.querySelector('.left-button')
+
+      this.rightButton = carousel.querySelector('.right-button')
+
+      this.imgList = Array.from(carousel.querySelectorAll('img'))
+
+      this.currentIndex = 0;
+      this.imgList[this.currentIndex].style.display = 'flex';
+
+      this.leftButton.addEventListener('click', () => this.leftClick())
+
+      this.rightButton.addEventListener('click', () => this.rightClick())
+  }
+
+  leftClick(){
+      if(this.currentIndex <= 0){
+          this.currentIndex = this.imgList.length-1;
+          this.imgList.forEach(img => img.style.display = 'none')
+          this.imgList[this.currentIndex].style.display = 'flex'
+      }
+      else {
+          this.currentIndex--;
+          this.imgList.forEach(img => img.style.display = 'none')
+          this.imgList[this.currentIndex].style.display = 'flex'
+      }
+  }
+
+  rightClick(){
+      if(this.currentIndex >= this.imgList.length-1){
+          this.currentIndex = 0;
+          this.imgList.forEach(img => img.style.display = 'none')
+          this.imgList[this.currentIndex].style.display = 'flex'
+      }
+      else {
+          this.currentIndex++;
+          this.imgList.forEach(img => img.style.display = 'none')
+          this.imgList[this.currentIndex].style.display = 'flex'
+      }
+  }
+}
+
+new Carousel(carousel)
