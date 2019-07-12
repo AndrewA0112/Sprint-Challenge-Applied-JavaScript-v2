@@ -17,3 +17,14 @@
 // </div>
 //
 // Create a card for each of the articles and add the card to the DOM.
+
+const articlesPromise = axios.get('https://lambda-times-backend.herokuapp.com/articles')
+
+articlesPromise
+    .then(data => {
+        console.log('API response', data)
+    })
+
+    .catch(error => {
+        console.log('Error connecting to API', error)
+    })

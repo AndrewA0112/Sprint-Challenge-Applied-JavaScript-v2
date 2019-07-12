@@ -14,7 +14,7 @@ const topicsPromise = axios.get('https://lambda-times-backend.herokuapp.com/topi
 
 topicsPromise
     .then(data => {
-        console.log('API response', data.data.topics)
+        console.log('Tabs API response', data.data.topics)
         data.data.topics.forEach(topic => {
             topics.appendChild(createTab(topic))
         })
