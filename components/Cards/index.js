@@ -25,7 +25,7 @@ articlesPromise
     .then(data => {
         console.log('Articles API response', data.data.articles)
         for (let [type, articles] of Object.entries(data.data.articles)) {
-            console.log(type, articles);
+            console.log(type, articles)
             articles.forEach(article => {
                 cards.appendChild(createCard(article))
             })

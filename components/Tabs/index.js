@@ -27,6 +27,7 @@ topicsPromise
     function createTab (topic) {
         const topics = document.createElement('div')
         
+        topics.dataset.tab = topic
         topics.classList.add('tab')
 
         topics.textContent = topic
